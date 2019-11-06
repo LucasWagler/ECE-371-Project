@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Apache.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Apache.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Oct 29 16:22:42 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Nov 05 17:17:36 2019
 <BR><P>
-<H3>Maximum Stack Usage =        304 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        144 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; clear_DOGM &rArr; prepData
 <P>
@@ -184,7 +184,7 @@ Global Symbols
 <P><STRONG><a name="[6b]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[39]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 304 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 144 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; clear_DOGM &rArr; prepData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -431,8 +431,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[3a]"></a>main</STRONG> (Thumb, 288 bytes, Stack size 272 bytes, apache.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = main &rArr; clear_DOGM &rArr; prepData
+<P><STRONG><a name="[3a]"></a>main</STRONG> (Thumb, 172 bytes, Stack size 112 bytes, apache.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = main &rArr; clear_DOGM &rArr; prepData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_UART
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resetDOGM

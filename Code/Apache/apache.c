@@ -18,7 +18,7 @@ const uint8_t dogm_init_seq[] =
 };
 
 //uint8_t our_msg[] = "AT\r\n"; //Status
-uint8_t our_msg[] = "ATE0\r\n"; //Disable Echo
+//uint8_t our_msg[] = "ATE0\r\n"; //Disable Echo
 //uint8_t our_msg[] = "AT+RST\r\n"; //Reset
 //uint8_t our_msg[] = "AT+GMR\r\n"; //Firmware Version
 //uint8_t our_msg[] = "AT+CWMODE?\r\n"; //Get mode
@@ -38,12 +38,12 @@ uint8_t our_msg[] = "ATE0\r\n"; //Disable Echo
 //uint8_t our_msg[] = "AT+CIPSERVER=1,80\r\n"; //Start server
 //uint8_t our_msg[] = "AT+CIPSTO?\r\n"; //Get server timeout
 //uint8_t our_msg[] = "AT+CIPSTO=30\r\n"; //Set server timeout
-//uint8_t our_msg[] = "AT+CIPSTART=1,\"TCP\",\"192.168.0.102\",80\r\n"; //Enter IP of machine you want to connect to
+uint8_t our_msg[] = "AT+CIPSTART=1,\"TCP\",\"192.168.0.102\",80\r\n"; //Enter IP of machine you want to connect to
 //uint8_t our_msg[] = "AT+CIPSTATUS\r\n"; //Connection status
-//uint8_t our_msg2[] = "AT+CIPSEND=1,18\r\n";//GET /breach.py\r\n\r\n";//\r\nHost: 192.168.0.102\r\nConnection: close\r\n\r\n";
-uint8_t our_msg2[] = "AT+CIPSEND=1,1\r\n";
-uint8_t our_msg3[] = "X";
-//uint8_t our_msg3[] = "GET /breach.py \r\n\r\n";
+uint8_t our_msg2[] = "AT+CIPSEND=1,18\r\n";//GET /breach.py\r\n\r\n";//\r\nHost: 192.168.0.102\r\nConnection: close\r\n\r\n";
+//uint8_t our_msg2[] = "AT+CIPSEND=1,1\r\n";
+//uint8_t our_msg3[] = "X";
+uint8_t our_msg3[] = "GET /breach.py\r\n\r\n";
 //uint8_t our_msg3[] = "AT+CIPCLOSE=1\r\n"; //Close connection
 
 void config_UART()
@@ -220,51 +220,85 @@ int main()
 	size_t arrayLength2 = sizeof (our_msg2) / sizeof (our_msg2[0]);
 	size_t arrayLength3 = sizeof (our_msg3) / sizeof (our_msg3[0]);
 	
+	/*
 	//Connection
 	for(uint16_t i = 0; i < arrayLength; i++)
 	{
 		send_UART(our_msg[i]);
 	}
-	//Read
-	for(uint16_t i = 0; i < dataLength; i++)
+	
+	for(uint16_t i = 0; i < dataLength3; i++)
 	{
-		data[i] = receive_UART();
-		if(data[i] == '\r' || data[i] == '\n')
+		data3[i] = receive_UART();
+		
+		if(data3[i] == '\r' || data3[i] == '\n')
 		{
-			data[i] = ' ';
+			data3[i] = ' ';
 		}				
-		prepData(data[i], 1);
+		prepData(data3[i], 1);
+		
 	}
-	clear_DOGM();
+	//Stall
+	for(uint16_t z = 0; z < 100; z++){};
+	*/
+	
+	
 	//Send request
 	for(uint16_t j = 0; j < arrayLength2; j++)
 	{
 		send_UART(our_msg2[j]);
 	}
+	//receive_UART();
+	
+	for(uint16_t z = 0; z < 1000; z++){};
+			
+	//GET
+	for(uint16_t l = 0; l < arrayLength3; l++)
+	{
+		send_UART(our_msg3[l]);
+	}
+	
+	for(uint16_t i = 0; i < dataLength3; i++)
+	{
+		data3[i] = receive_UART();
+		
+		if(data3[i] == '\r' || data3[i] == '\n')
+		{
+			data3[i] = ' ';
+		}				
+		prepData(data3[i], 1);
+		
+	}
+	/*
+	//Read
+	
+	clear_DOGM();	
+	
 	//Read
 	for(uint16_t k = 0; k < dataLength2; k++)
 	{
 		data2[k] = receive_UART();
+		
 		if(data2[k] == '\r' || data2[k] == '\n')
 		{
 			data2[k] = ' ';	
 		}	
-		prepData(data2[k], 1);		
+		prepData(data2[k], 1);	
+				
 	}
 	//for(uint16_t z = 0; z < 100; z++){};
-	//GET
-	for(uint8_t l = 0; l < arrayLength3; l++)
-	{
-		send_UART(our_msg3[l]);
-	}
+	
 	//Read
 	for(uint16_t m = 0; m < dataLength3; m++)
 	{
 		data3[m] = receive_UART();
+		
 		if(data3[m] == '\r' || data3[m] == '\n')
 		{
 			data3[m] = ' ';	
 		}
 		prepData(data3[m], 1);
+		
 	}
+	*/
 }
