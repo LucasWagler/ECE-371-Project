@@ -18,7 +18,7 @@ const uint8_t dogm_init_seq[] =
 };
 
 ///uint8_t our_msg[] = "AT+CWMODE=3\r\n"; //Set mode to softAP and station
-//uint8_t our_msg[] = "AT+CWJAP=\"ATTA5qYQs2\",\"?g2=sn?i+8zi\"\r\n"; //Connect to router
+//uint8_t our_msg[] = "AT+CWJAP=\"RPI\",\"Th7nd3rL@b\"\r\n"; //Connect to router
 //uint8_t our_msg[] = "AT+CWJAP?\r\n"; //Check the Router Connection Settings
 uint8_t our_msg[] = "AT+CIFSR\r\n"; //Get IP of ESP8266
 //uint8_t our_msg[] = "AT+CIPMODE=1\r\n"; //Set mode to transparent transmission

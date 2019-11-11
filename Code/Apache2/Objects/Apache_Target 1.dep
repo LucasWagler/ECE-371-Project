@@ -1,5 +1,5 @@
 Dependencies for Project 'Apache', Target 'Target 1': (DO NOT MODIFY !)
-F (.\apache.c)(0x5DC849D9)(--c99 -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\aj39a\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\aj39a\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DMKL25Z128xxx4 -DCLOCK_SETUP="1"-o .\objects\apache.o --omf_browse .\objects\apache.crf --depend .\objects\apache.d)
+F (.\apache.c)(0x5DC990E1)(--c99 -c --cpu Cortex-M0+ -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\MKL25Z128xxx4-I.\RTE\_Target_1-IC:\Users\aj39a\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Users\aj39a\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include-D__UVISION_VERSION="528" -D_RTE_ -DMKL25Z128xxx4 -DCLOCK_SETUP="1"-o .\objects\apache.o --omf_browse .\objects\apache.crf --depend .\objects\apache.d)
 I (C:\Users\aj39a\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h)(0x585C24CA)
 I (D:\Keil\ARM\ARMCC\include\stdint.h)(0x5CEC22A2)
 I (C:\Users\aj39a\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm0plus.h)(0x5D263976)
