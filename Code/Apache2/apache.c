@@ -17,13 +17,13 @@ const uint8_t dogm_init_seq[] =
 	0x3a, 0x09, 0x06, 0x1e, 0x39, 0x1b, 0x6e, 0x57, 0x72, 0x38, 0x0f
 };
 
-///uint8_t our_msg[] = "AT+CWMODE=3\r\n"; //Set mode to softAP and station
+//uint8_t our_msg[] = "AT+CWMODE=1\r\n"; //Set mode to softAP and station (3)
 //uint8_t our_msg[] = "AT+CWJAP=\"RPI\",\"Th7nd3rL@b\"\r\n"; //Connect to router
-//uint8_t our_msg[] = "AT+CWJAP?\r\n"; //Check the Router Connection Settings
+//uint8_t our_msg2[] = "AT+CWJAP?\r\n"; //Check the Router Connection Settings
 uint8_t our_msg[] = "AT+CIFSR\r\n"; //Get IP of ESP8266
-//uint8_t our_msg[] = "AT+CIPMODE=1\r\n"; //Set mode to transparent transmission
-uint8_t our_msg2[] = "AT+CIPSTART=\"TCP\",\"http://127.0.0.1\",80\r\n"; //Enter IP of machine you want to connect to (APACHE)
-//uint8_t our_msg[] = "AT+CIPSTATUS\r\n"; //Connection status
+//uint8_t our_msg2[] = "AT+CIPMODE=1\r\n"; //Set mode to transparent transmission
+uint8_t our_msg2[] = "AT+CIPSTART=\"TCP\",\"127.0.0.1\",80\r\n"; //Enter IP of machine you want to connect to (APACHE)
+//uint8_t our_msg3[] = "AT+CIPSTATUS\r\n"; //Connection status
 uint8_t our_msg3[] = "AT+CIPSEND=\"GET /test.py\"\r\n";
 
 
@@ -210,11 +210,11 @@ void clear_DOGM()
 int main()
 {
 	uint8_t data[120];
-	//uint8_t data2[80];
+	uint8_t data2[80];
 	//uint8_t data3[80];
 	
 	size_t dataLength = sizeof (data) / sizeof (data[0]);
-	//size_t dataLength2 = sizeof (data2) / sizeof (data2[0]);
+	size_t dataLength2 = sizeof (data2) / sizeof (data2[0]);
 	//size_t dataLength3 = sizeof (data3) / sizeof (data3[0]);
 		
 	config_spi();
@@ -233,13 +233,14 @@ int main()
 	size_t arrayLength2 = sizeof (our_msg2) / sizeof (our_msg2[0]);
 	size_t arrayLength3 = sizeof (our_msg3) / sizeof (our_msg3[0]);
 	
-		/*
+	
+	
+	/*
 	for(uint16_t i = 0; i < arrayLength; i++)
 	{
 		send_UART(our_msg[i]);
 	}
 	*/
-	
 	
 	//Connection
 	for(uint16_t i = 0; i < arrayLength2; i++)
@@ -247,27 +248,23 @@ int main()
 		send_UART(our_msg2[i]);
 	}
 	
-	for(uint16_t i = 0; i < dataLength; i++)
+	for(uint16_t i = 0; i < dataLength2; i++)
 	{
-		data[i] = receive_UART();
+		data2[i] = receive_UART();
 		
-		if(data[i] == '\r' || data[i] == '\n')
+		if(data2[i] == '\r' || data2[i] == '\n')
 		{
-			data[i] = ' ';
+			data2[i] = ' ';
 		}				
-		prepData(data[i], 1);
+		prepData(data2[i], 1);
 	}
-	
-	/*
+		
 	
 	//GET
 	for(uint16_t i = 0; i < arrayLength3; i++)
 	{
 		send_UART(our_msg3[i]);
 	}
-	*/
-	
-	
 	
 	/*
 	for(uint16_t i = 0; i < dataLength; i++)

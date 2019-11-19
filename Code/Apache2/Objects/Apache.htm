@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Apache.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Apache.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 11 11:48:41 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Nov 12 15:02:19 2019
 <BR><P>
-<H3>Maximum Stack Usage =        176 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        140 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; clear_DOGM &rArr; prepData
 <P>
@@ -184,7 +184,7 @@ Global Symbols
 <P><STRONG><a name="[6b]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[39]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 140 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; clear_DOGM &rArr; prepData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -402,51 +402,51 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[3a]"></a>main</STRONG> (Thumb, 130 bytes, Stack size 144 bytes, apache.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = main &rArr; clear_DOGM &rArr; prepData
-</UL>
-<BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_UART
-<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resetDOGM
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_UART
-<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
-<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;config_spi
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;config_UART
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_DOGM
-</UL>
-<BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
-</UL>
-
-<P><STRONG><a name="[46]"></a>config_UART</STRONG> (Thumb, 160 bytes, Stack size 0 bytes, apache.o(i.config_UART))
-<BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[45]"></a>config_spi</STRONG> (Thumb, 258 bytes, Stack size 0 bytes, apache.o(i.config_spi))
-<BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
 <P><STRONG><a name="[44]"></a>prepData</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, apache.o(i.prepData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = prepData
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_SPI
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_SPI
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_DOGM
 </UL>
 
-<P><STRONG><a name="[49]"></a>receive_UART</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, apache.o(i.receive_UART))
+<P><STRONG><a name="[4a]"></a>receive_UART</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, apache.o(i.receive_UART))
 <BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[47]"></a>resetDOGM</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, apache.o(i.resetDOGM))
+<P><STRONG><a name="[48]"></a>resetDOGM</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, apache.o(i.resetDOGM))
 <BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4a]"></a>send_SPI</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, apache.o(i.send_SPI))
+<P><STRONG><a name="[49]"></a>send_UART</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, apache.o(i.send_UART))
+<BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[47]"></a>config_UART</STRONG> (Thumb, 160 bytes, Stack size 0 bytes, apache.o(i.config_UART))
+<BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[46]"></a>config_spi</STRONG> (Thumb, 258 bytes, Stack size 0 bytes, apache.o(i.config_spi))
+<BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[3a]"></a>main</STRONG> (Thumb, 154 bytes, Stack size 108 bytes, apache.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 140<LI>Call Chain = main &rArr; clear_DOGM &rArr; prepData
+</UL>
+<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_UART
+<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resetDOGM
+<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_UART
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;config_spi
+<LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;config_UART
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_DOGM
+</UL>
+<BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
+</UL>
+
+<P><STRONG><a name="[45]"></a>send_SPI</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, apache.o(i.send_SPI))
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
-</UL>
-
-<P><STRONG><a name="[48]"></a>send_UART</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, apache.o(i.send_UART))
-<BR><BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 <P>
 <H3>

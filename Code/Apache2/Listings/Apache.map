@@ -275,23 +275,23 @@ Image Symbol Table
     .text                                    0x0000020e   Section        0  indicate_semi.o(.text)
     i.SystemInit                             0x00000210   Section        0  system_mkl25z4.o(i.SystemInit)
     i.clear_DOGM                             0x00000348   Section        0  apache.o(i.clear_DOGM)
-    i.main                                   0x00000360   Section        0  apache.o(i.main)
-    .constdata                               0x000003ec   Section       11  apache.o(.constdata)
+    i.prepData                               0x0000035e   Section        0  apache.o(i.prepData)
+    i.receive_UART                           0x00000394   Section        0  apache.o(i.receive_UART)
+    i.resetDOGM                              0x000003ac   Section        0  apache.o(i.resetDOGM)
+    i.send_UART                              0x000003e0   Section        0  apache.o(i.send_UART)
     .ARM.__at_0x400                          0x00000400   Section       16  startup_mkl25z4.o(.ARM.__at_0x400)
     i.config_UART                            0x00000410   Section        0  apache.o(i.config_UART)
     i.config_spi                             0x000004c0   Section        0  apache.o(i.config_spi)
-    i.prepData                               0x000005d4   Section        0  apache.o(i.prepData)
-    i.receive_UART                           0x0000060c   Section        0  apache.o(i.receive_UART)
-    i.resetDOGM                              0x00000624   Section        0  apache.o(i.resetDOGM)
-    i.send_SPI                               0x00000658   Section        0  apache.o(i.send_SPI)
-    i.send_UART                              0x00000684   Section        0  apache.o(i.send_UART)
-    .data                                    0x1ffff000   Section       81  apache.o(.data)
-    .bss                                     0x1ffff054   Section       96  libspace.o(.bss)
-    HEAP                                     0x1ffff0b8   Section        0  startup_mkl25z4.o(HEAP)
-    STACK                                    0x1ffff0b8   Section      256  startup_mkl25z4.o(STACK)
-    Heap_Mem                                 0x1ffff0b8   Data           0  startup_mkl25z4.o(HEAP)
-    Stack_Mem                                0x1ffff0b8   Data         256  startup_mkl25z4.o(STACK)
-    __initial_sp                             0x1ffff1b8   Data           0  startup_mkl25z4.o(STACK)
+    i.main                                   0x000005d4   Section        0  apache.o(i.main)
+    i.send_SPI                               0x0000067c   Section        0  apache.o(i.send_SPI)
+    .constdata                               0x000006a8   Section       11  apache.o(.constdata)
+    .data                                    0x1ffff000   Section       74  apache.o(.data)
+    .bss                                     0x1ffff04c   Section       96  libspace.o(.bss)
+    HEAP                                     0x1ffff0b0   Section        0  startup_mkl25z4.o(HEAP)
+    STACK                                    0x1ffff0b0   Section      256  startup_mkl25z4.o(STACK)
+    Heap_Mem                                 0x1ffff0b0   Data           0  startup_mkl25z4.o(HEAP)
+    Stack_Mem                                0x1ffff0b0   Data         256  startup_mkl25z4.o(STACK)
+    __initial_sp                             0x1ffff1b0   Data           0  startup_mkl25z4.o(STACK)
 
     Global Symbols
 
@@ -432,22 +432,22 @@ Image Symbol Table
     __semihosting_library_function           0x0000020f   Thumb Code     0  indicate_semi.o(.text)
     SystemInit                               0x00000211   Thumb Code   266  system_mkl25z4.o(i.SystemInit)
     clear_DOGM                               0x00000349   Thumb Code    22  apache.o(i.clear_DOGM)
-    main                                     0x00000361   Thumb Code   130  apache.o(i.main)
-    dogm_init_seq                            0x000003ec   Data          11  apache.o(.constdata)
+    prepData                                 0x0000035f   Thumb Code    54  apache.o(i.prepData)
+    receive_UART                             0x00000395   Thumb Code    20  apache.o(i.receive_UART)
+    resetDOGM                                0x000003ad   Thumb Code    42  apache.o(i.resetDOGM)
+    send_UART                                0x000003e1   Thumb Code    20  apache.o(i.send_UART)
     config_UART                              0x00000411   Thumb Code   160  apache.o(i.config_UART)
     config_spi                               0x000004c1   Thumb Code   258  apache.o(i.config_spi)
-    prepData                                 0x000005d5   Thumb Code    54  apache.o(i.prepData)
-    receive_UART                             0x0000060d   Thumb Code    20  apache.o(i.receive_UART)
-    resetDOGM                                0x00000625   Thumb Code    42  apache.o(i.resetDOGM)
-    send_SPI                                 0x00000659   Thumb Code    38  apache.o(i.send_SPI)
-    send_UART                                0x00000685   Thumb Code    20  apache.o(i.send_UART)
-    Region$$Table$$Base                      0x0000069c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000006bc   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x000005d5   Thumb Code   154  apache.o(i.main)
+    send_SPI                                 0x0000067d   Thumb Code    38  apache.o(i.send_SPI)
+    dogm_init_seq                            0x000006a8   Data          11  apache.o(.constdata)
+    Region$$Table$$Base                      0x000006b4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000006d4   Number         0  anon$$obj.o(Region$$Table)
     our_msg                                  0x1ffff000   Data          11  apache.o(.data)
-    our_msg2                                 0x1ffff00b   Data          42  apache.o(.data)
-    our_msg3                                 0x1ffff035   Data          28  apache.o(.data)
-    __libspace_start                         0x1ffff054   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x1ffff0b4   Data           0  libspace.o(.bss)
+    our_msg2                                 0x1ffff00b   Data          35  apache.o(.data)
+    our_msg3                                 0x1ffff02e   Data          28  apache.o(.data)
+    __libspace_start                         0x1ffff04c   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x1ffff0ac   Data           0  libspace.o(.bss)
 
 
 
@@ -457,9 +457,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000165
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000710, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000720, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000006bc, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000006d4, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -522,37 +522,36 @@ Memory Map of the image
     0x0000020e   0x0000020e   0x00000002   PAD
     0x00000210   0x00000210   0x00000138   Code   RO          114    i.SystemInit        system_mkl25z4.o
     0x00000348   0x00000348   0x00000016   Code   RO            3    i.clear_DOGM        apache.o
-    0x0000035e   0x0000035e   0x00000002   PAD
-    0x00000360   0x00000360   0x0000008c   Code   RO            6    i.main              apache.o
-    0x000003ec   0x000003ec   0x0000000b   Data   RO           12    .constdata          apache.o
-    0x000003f7   0x000003f7   0x00000009   PAD
+    0x0000035e   0x0000035e   0x00000036   Code   RO            7    i.prepData          apache.o
+    0x00000394   0x00000394   0x00000018   Code   RO            8    i.receive_UART      apache.o
+    0x000003ac   0x000003ac   0x00000034   Code   RO            9    i.resetDOGM         apache.o
+    0x000003e0   0x000003e0   0x00000018   Code   RO           11    i.send_UART         apache.o
+    0x000003f8   0x000003f8   0x00000008   PAD
     0x00000400   0x00000400   0x00000010   Code   RO          104    .ARM.__at_0x400     startup_mkl25z4.o
     0x00000410   0x00000410   0x000000b0   Code   RO            4    i.config_UART       apache.o
     0x000004c0   0x000004c0   0x00000114   Code   RO            5    i.config_spi        apache.o
-    0x000005d4   0x000005d4   0x00000036   Code   RO            7    i.prepData          apache.o
-    0x0000060a   0x0000060a   0x00000002   PAD
-    0x0000060c   0x0000060c   0x00000018   Code   RO            8    i.receive_UART      apache.o
-    0x00000624   0x00000624   0x00000034   Code   RO            9    i.resetDOGM         apache.o
-    0x00000658   0x00000658   0x0000002c   Code   RO           10    i.send_SPI          apache.o
-    0x00000684   0x00000684   0x00000018   Code   RO           11    i.send_UART         apache.o
-    0x0000069c   0x0000069c   0x00000020   Data   RO          320    Region$$Table       anon$$obj.o
+    0x000005d4   0x000005d4   0x000000a8   Code   RO            6    i.main              apache.o
+    0x0000067c   0x0000067c   0x0000002c   Code   RO           10    i.send_SPI          apache.o
+    0x000006a8   0x000006a8   0x0000000b   Data   RO           12    .constdata          apache.o
+    0x000006b3   0x000006b3   0x00000001   PAD
+    0x000006b4   0x000006b4   0x00000020   Data   RO          320    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x000006bc, Size: 0x00000054, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x000006d4, Size: 0x0000004c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffff000   0x000006bc   0x00000051   Data   RW           13    .data               apache.o
+    0x1ffff000   0x000006d4   0x0000004a   Data   RW           13    .data               apache.o
 
 
-    Execution Region ER_ZI (Exec base: 0x1ffff054, Load base: 0x00000710, Size: 0x00000164, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x1ffff04c, Load base: 0x00000720, Size: 0x00000164, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffff054        -       0x00000060   Zero   RW          193    .bss                c_p.l(libspace.o)
-    0x1ffff0b4   0x00000710   0x00000004   PAD
-    0x1ffff0b8        -       0x00000000   Zero   RW          102    HEAP                startup_mkl25z4.o
-    0x1ffff0b8        -       0x00000100   Zero   RW          101    STACK               startup_mkl25z4.o
+    0x1ffff04c        -       0x00000060   Zero   RW          193    .bss                c_p.l(libspace.o)
+    0x1ffff0ac   0x00000720   0x00000004   PAD
+    0x1ffff0b0        -       0x00000000   Zero   RW          102    HEAP                startup_mkl25z4.o
+    0x1ffff0b0        -       0x00000100   Zero   RW          101    STACK               startup_mkl25z4.o
 
 
 ==============================================================================
@@ -562,14 +561,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       812         68         11         81          0      11406   apache.o
+       840         72         11         74          0      11526   apache.o
         80         44        192          0        256        900   startup_mkl25z4.o
        312         46          0          0          0        589   system_mkl25z4.o
 
     ----------------------------------------------------------------------
-      1208        158        244         84        256      12895   Object Totals
+      1240        170        236         76        256      13015   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         4          0          9          3          0          0   (incl. Padding)
+         8          8          1          2          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -616,15 +615,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1480        174        244         84        356      12999   Grand Totals
-      1480        174        244         84        356      12999   ELF Image Totals
-      1480        174        244         84          0          0   ROM Totals
+      1512        186        236         76        356      13119   Grand Totals
+      1512        186        236         76        356      13119   ELF Image Totals
+      1512        186        236         76          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 1724 (   1.68kB)
-    Total RW  Size (RW Data + ZI Data)               440 (   0.43kB)
-    Total ROM Size (Code + RO Data + RW Data)       1808 (   1.77kB)
+    Total RO  Size (Code + RO Data)                 1748 (   1.71kB)
+    Total RW  Size (RW Data + ZI Data)               432 (   0.42kB)
+    Total ROM Size (Code + RO Data + RW Data)       1824 (   1.78kB)
 
 ==============================================================================
 

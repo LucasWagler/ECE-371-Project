@@ -11,76 +11,12 @@ void config_Pins(){
 	SIM->SCGC5 |= SIM_SCGC5_PORTE_MASK;         // Ties clock to E Pins
 	SIM->SCGC5 |= SIM_SCGC5_PORTA_MASK;         // Ties clock to A Pins
 	
-	PORTC->PCR[3]  &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C3
-	PORTC->PCR[7]  &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C7
-	PORTC->PCR[8]  &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C8
-	PORTC->PCR[9]  &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C9
-	PORTC->PCR[10] &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C10
-	PORTC->PCR[11] &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C11
-	PORTC->PCR[12] &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C12
-	PORTC->PCR[13] &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C13
-	PORTC->PCR[16] &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C16
-	PORTC->PCR[17] &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin C17
-
-	PORTC->PCR[3]  |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C3
-	PORTC->PCR[7]  |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C7
-	PORTC->PCR[8]  |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C8
-	PORTC->PCR[9]  |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C9
-	PORTC->PCR[10] |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C10
-	PORTC->PCR[11] |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C11
-	PORTC->PCR[12] |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C12
-	PORTC->PCR[13] |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C13
-	PORTC->PCR[16] |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C16
-	PORTC->PCR[17] |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin C17
-	
-	PORTE->PCR[2] &= ~ PORT_PCR_MUX_MASK;       //  clears choice of ALT for Pin E2
-	PORTE->PCR[3] &= ~ PORT_PCR_MUX_MASK;       //  clears choice of ALT for Pin E3
-	PORTE->PCR[4] &= ~ PORT_PCR_MUX_MASK;       //  clears choice of ALT for Pin E4
-	
-	PORTE->PCR[2] |= PORT_PCR_MUX(1);           // chooses choice of ALT for Pin E2
-	PORTE->PCR[3] |= PORT_PCR_MUX(1);           // chooses choice of ALT for Pin E3
-	PORTE->PCR[4] |= PORT_PCR_MUX(1);           // chooses choice of ALT for Pin E4
-	
-	PORTA->PCR[4]  &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin A4
-	PORTA->PCR[5]  &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin A5
-	PORTA->PCR[12] &= ~ PORT_PCR_MUX_MASK;      //  clears choice of ALT for Pin A12
-	
-	PORTA->PCR[4]  |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin A4
-	PORTA->PCR[5]  |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin A5
-	PORTA->PCR[12] |= PORT_PCR_MUX(1);          // chooses choice of ALT for Pin A12
-	
-	GPIOA->PDDR |= (1UL << 4);							 	  // makes A4 an output
-	GPIOA->PDDR |= (1UL << 5);						 		  // makes A5 an output
-	GPIOA->PDDR |= (1UL << 12);								  // makes A12 an output
-	
-	GPIOA->PCOR |= (1UL << 4);								  // makes A4  Low
-	GPIOA->PCOR |= (1UL << 5);								  // makes A5  Low
-	GPIOA->PCOR |= (1UL << 12);								  // makes A12 Low
-	
-	GPIOC->PDDR |= !(1UL << 3);								 	// makes C3  an input - button 5
-	GPIOC->PDDR |= !(1UL << 7);									// makes C7  an input - button 6
-	GPIOC->PDDR |= !(1UL << 8);								 	// makes C8  an input - button 4
-	GPIOC->PDDR |= !(1UL << 9);									// makes C9  an input - button 3
-	GPIOC->PDDR |= !(1UL << 10);								// makes C10 an input - button 2 
-	GPIOC->PDDR |= !(1UL << 11);								// makes C11 an input - button 1
-	GPIOC->PDDR |= !(1UL << 12);								// makes C12 an input - button 8
-	GPIOC->PDDR |= !(1UL << 13);								// makes C13 an input - button 7
-	GPIOC->PDDR |= !(1UL << 16);								// makes C16 an input - button 10
-	GPIOC->PDDR |= !(1UL << 17);								// makes C17 an input - button 9
-	
-	GPIOE->PDDR |= !(1UL << 2);								 	// makes E2  an input
-	GPIOE->PDDR |= !(1UL << 3);									// makes E3  an input
-	GPIOE->PDDR |= !(1UL << 4);									// makes E4  an input
-	
 	//UART Pins
 	PORTA->PCR[1]  &= ~PORT_PCR_MUX_MASK;				//  clears choice of ALT for Pin A1
 	PORTA->PCR[1]  |=  PORT_PCR_MUX(2);					// chooses choice of ALT for Pin A1 (UART0_RX)
 	
 	PORTA->PCR[2]  &= ~PORT_PCR_MUX_MASK;				//  clears choice of ALT for Pin A1
 	PORTA->PCR[2]  |=  PORT_PCR_MUX(2);					// chooses choice of ALT for Pin A1 (UART0_TX)
-	
-	GPIOA->PDDR |= (1UL << 1);							 	  // makes A1 an output
-	GPIOA->PDDR |= (1UL << 2);						 		  // makes A2 an output
 	
 }
 
@@ -91,7 +27,7 @@ void config_UART(){
 	
 	UART0->C2 &= ~UART0_C2_TE_MASK; //DISABLE UART TO CONFIG
 	
-	// SET UART CLOCK TO 48 MHz 
+	//SET UART CLOCK TO 48 MHz 
 	SIM->SOPT2 |= SIM_SOPT2_UART0SRC(1);
 	SIM->SOPT2 |= SIM_SOPT2_PLLFLLSEL_MASK;
 	
@@ -131,21 +67,10 @@ void Send_UART(uint8_t message){
 }
 
 int main(){
-	config_UART();
 	config_Pins();
-	//chrome port is 9100? and need to find channel number, i think its 0-5. it is the value of the device youre using. my laptop is 0
+	config_UART();
 	
-	int ADC_Value = 12345;
-	int values[5] = {1,2,3,4,5};
-	char z[5];
-	for (int i = 4; i >= 0; i--)
-	{
-		values[i] = ADC_Value % 10;
-		z[i] = values[i] | 0x30;
-		ADC_Value = ADC_Value / 10;
-	}
-	
-
+	uint8_t z[8] = "Moved";
 	
 	uint8_t Attention[4]																			= "AT\r\n";																			//Attention
 	uint8_t Reset[10]																					= "AT+RST\r\n";																	//Reset

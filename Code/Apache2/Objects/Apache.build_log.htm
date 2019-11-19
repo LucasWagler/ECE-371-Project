@@ -9,7 +9,7 @@ License Information: Alex Jasper, Trine University, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.28.0.0
-Toolchain Path:  D:\Keil\ARM\ARMCC\Bin
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 6 (build 750)
 Assembler:       Armasm.exe V5.06 update 6 (build 750)
 Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
@@ -22,21 +22,19 @@ Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
 C:\Users\aj39a\Documents\GitHub\ECE-371-Project\Code\Apache2\Apache.uvprojx
-Project File Date:  11/10/2019
+Project File Date:  11/12/2019
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil\ARM\ARMCC\Bin'
-Rebuild target 'Target 1'
-assembling startup_MKL25Z4.s...
-compiling system_MKL25Z4.c...
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Target 1'
 compiling apache.c...
+apache.c(216): warning:  #177-D: variable "dataLength"  was declared but never referenced
+  	size_t dataLength = sizeof (data) / sizeof (data[0]);
 apache.c(232): warning:  #177-D: variable "arrayLength"  was declared but never referenced
   	size_t arrayLength = sizeof (our_msg) / sizeof (our_msg[0]);
-apache.c(234): warning:  #177-D: variable "arrayLength3"  was declared but never referenced
-  	size_t arrayLength3 = sizeof (our_msg3) / sizeof (our_msg3[0]);
 apache.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=1480 RO-data=244 RW-data=84 ZI-data=356  
+Program Size: Code=1512 RO-data=236 RW-data=76 ZI-data=356  
 ".\Objects\Apache.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -64,8 +62,8 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.3.0
 
    * Component: Keil::Device:Startup:2.5.0
-      Source file:   Device\Source\ARM\startup_MKL25Z4.s
       Include file:  Device\Source\system_MKL25Z4.h
+      Source file:   Device\Source\ARM\startup_MKL25Z4.s
       Source file:   Device\Source\system_MKL25Z4.c
 Build Time Elapsed:  00:00:01
 </pre>
