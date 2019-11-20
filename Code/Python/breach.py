@@ -1,10 +1,3 @@
-#Alex Jasper
-#10/26/19
-#This program creates and connects a socket to a specified IP and port.
-#If a proper message is set, the program logs a breach of security with a timestamp/message
-#and connects to the IFTTT web hook to call a specified phone number.
-#It is intended to run during a security breach.
-
 import datetime
 import logging
 import requests
@@ -14,65 +7,63 @@ import time
 import pywifi
 from pywifi import const
 
+wifi = pywifi.PyWiFi()
+iface = wifi.interfaces()[0]
+profile = pywifi.Profile()
+print("Initializing: Please place your Security System.\nYou have 30 seconds.")
+time.sleep(30)
+print("System Armed")
+
 while(1):
+    reconnect = False
+    #Open socket to AJ
     try:
         soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         soc.connect(('192.168.0.222', 80))
-        msg = soc.recv(2048)
+        msg = soc.recv(10)
         out = msg.decode("utf-8")
-        if out == "Moved":
+        if(out == "Moved"):
             print(out)
-            try:
-                wifi = pywifi.PyWiFi()
-                iface = wifi.interfaces()[0]
-                iface.disconnect()
-                time.sleep(0.25)
-                assert iface.status() in\
-                       [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
-                profile = pywifi.Profile()
-                profile.ssid = 'Thunder_Devices'
-                profile.auth = const.AUTH_ALG_OPEN
-                profile.akm.append(const.AKM_TYPE_WPA2)
-                profile.cipher = const.CIPHER_TYPE_CCMP
-                profile.key = '12345678'
-
-                wifi = pywifi.PyWiFi()
-                iface = wifi.interfaces()[0]
-                profile = iface.add_network_profile(profile)
-                iface.connect(profile)
-
-                #notify user of breach
-                requests.post("https://maker.ifttt.com/trigger/breached/with/key/Qzhe5UWU5AUSnoBumev4U")
-                
-            finally:
-                #Setup date for timestamp and logger object
-                date =  datetime.datetime.now()
-                logger = logging.getLogger("Security-Breach")
-                handler = logging.FileHandler('breach.log')
-                handler.setLevel(logging.WARNING)
-                format = logging.Formatter("[%(levelname)s] " + str(date) + ": %(message)s")
-                handler.setFormatter(format)
-                logger.addHandler(handler)
-                #log breach
-                logger.warning("A breach was detected!")
-
+            reconnect = True
+            soc.close()
+            iface.disconnect()
+            time.sleep(0.25)
+            assert iface.status() in\
+                [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
+            profile.ssid = 'RPI'
+            profile.auth = const.AUTH_ALG_OPEN
+            profile.akm.append(const.AKM_TYPE_NONE)
+            profile.cipher = const.CIPHER_TYPE_CCMP
+            profile.key = '12345678'
+            profile = iface.add_network_profile(profile)
+            iface.connect(profile)
+            print("Connected to RPI")
+            time.sleep(5)
+            #notify user of breach
+            requests.post("https://maker.ifttt.com/trigger/breached/with/key/Qzhe5UWU5AUSnoBumev4U")        
     except socket.error as e:
         print("Error: %s" %(e))
     finally:
-        wifi = pywifi.PyWiFi()
-        iface = wifi.interfaces()[0]
-        iface.disconnect()
-        time.sleep(0.25)
-        assert iface.status() in\
-               [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
-        profile = pywifi.Profile()
-        profile.ssid = 'AJ'
-        profile.auth = const.AUTH_ALG_OPEN
-        profile.akm.append(const.AKM_TYPE_NONE)
-        #profile.cipher = const.CIPHER_TYPE_CCMP
-        #profile.key = '87654321'
-        wifi = pywifi.PyWiFi()
-        iface = wifi.interfaces()[0]
-        profile = iface.add_network_profile(profile)
-        iface.connect(profile)
-        soc.close()
+        if(reconnect):
+            #Setup date for timestamp and logger object
+            date =  datetime.datetime.now()
+            logger = logging.getLogger("Security-Breach")
+            handler = logging.FileHandler('breach.log')
+            handler.setLevel(logging.WARNING)
+            format = logging.Formatter("[%(levelname)s] " + str(date) + ": %(message)s")
+            handler.setFormatter(format)
+            logger.addHandler(handler)
+            #log breach
+            logger.warning("A breach was detected!")        
+            #Disconnect from whatever device and reconnect to AJ
+            iface.disconnect()
+            time.sleep(0.25)
+            assert iface.status() in\
+                [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
+            profile.ssid = 'AJ'
+            profile.auth = const.AUTH_ALG_OPEN
+            profile.akm.append(const.AKM_TYPE_NONE)
+            profile = iface.add_network_profile(profile)
+            iface.connect(profile)
+            print("Connected to AJ")
+            time.sleep(3)
