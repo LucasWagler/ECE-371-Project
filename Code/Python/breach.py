@@ -10,6 +10,9 @@ import logging
 import requests
 import socket
 import sys
+import time
+import pywifi
+from pywifi import const
 
 while(1):
     try:
@@ -20,8 +23,27 @@ while(1):
         if out == "Moved":
             print(out)
             try:
+                wifi = pywifi.PyWiFi()
+                iface = wifi.interfaces()[0]
+                iface.disconnect()
+                time.sleep(0.25)
+                assert iface.status() in\
+                       [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
+                profile = pywifi.Profile()
+                profile.ssid = 'Thunder_Devices'
+                profile.auth = const.AUTH_ALG_OPEN
+                profile.akm.append(const.AKM_TYPE_WPA2)
+                profile.cipher = const.CIPHER_TYPE_CCMP
+                profile.key = '12345678'
+
+                wifi = pywifi.PyWiFi()
+                iface = wifi.interfaces()[0]
+                profile = iface.add_network_profile(profile)
+                iface.connect(profile)
+
                 #notify user of breach
                 requests.post("https://maker.ifttt.com/trigger/breached/with/key/Qzhe5UWU5AUSnoBumev4U")
+                
             finally:
                 #Setup date for timestamp and logger object
                 date =  datetime.datetime.now()
@@ -37,4 +59,20 @@ while(1):
     except socket.error as e:
         print("Error: %s" %(e))
     finally:
+        wifi = pywifi.PyWiFi()
+        iface = wifi.interfaces()[0]
+        iface.disconnect()
+        time.sleep(0.25)
+        assert iface.status() in\
+               [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
+        profile = pywifi.Profile()
+        profile.ssid = 'AJ'
+        profile.auth = const.AUTH_ALG_OPEN
+        profile.akm.append(const.AKM_TYPE_NONE)
+        #profile.cipher = const.CIPHER_TYPE_CCMP
+        #profile.key = '87654321'
+        wifi = pywifi.PyWiFi()
+        iface = wifi.interfaces()[0]
+        profile = iface.add_network_profile(profile)
+        iface.connect(profile)
         soc.close()
