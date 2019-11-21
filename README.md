@@ -16,7 +16,6 @@ This program is written in C using the Keil Microvision IDE and PEMicro debugger
 
 Additional software resources include:
 
-- [Apache2.4 Server](https://httpd.apache.org/download.cgi)
 - [IFTTT web hook service](https://ifttt.com/)
 
-Python scripts are also included in this project, hosted on Apache, to log security breaches and connect to the IFTTT service.
+Python scripts are also included in this project, hosted on a local computer, to log security breaches and connect to the IFTTT service.
