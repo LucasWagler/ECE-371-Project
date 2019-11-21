@@ -14,8 +14,9 @@
 #define DISPLAYLENGTH 80
 
 //API
-extern const uint8_t dogm_init_seq[INITLENGTH];// = { 0x3a, 0x09, 0x06, 0x1e, 0x39, 0x1b, 0x6e, 0x57, 0x72, 0x38, 0x0f };
-extern const uint8_t printSeq[PRINTLENGTH];// = { "The device has been moved!" };
+extern const uint8_t dogm_init_seq[INITLENGTH];
+extern const uint8_t printSeq[PRINTLENGTH];
+
 void config_spi(void);
 void resetDOGM(void);
 void clearDOGM(void);
