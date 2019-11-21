@@ -30,14 +30,14 @@ while(1):
             time.sleep(0.25)
             assert iface.status() in\
                 [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
-            profile.ssid = 'RPI'
+            profile.ssid = 'Thunder_Devices'
             profile.auth = const.AUTH_ALG_OPEN
             profile.akm.append(const.AKM_TYPE_NONE)
             profile.cipher = const.CIPHER_TYPE_CCMP
             profile.key = '12345678'
             profile = iface.add_network_profile(profile)
             iface.connect(profile)
-            print("Connected to RPI")
+            print("Connected to Thunder_Devices")
             time.sleep(5)
             #notify user of breach
             requests.post("https://maker.ifttt.com/trigger/breached/with/key/Qzhe5UWU5AUSnoBumev4U")        

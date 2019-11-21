@@ -3,7 +3,7 @@
 int main()
 {
     queue_t q1;
-    init_queue(&q1,10);
+    init_q(&q1,10);
     for (int i = 1; i < 100; i++){
         put_q(&q1,-i);
     }
