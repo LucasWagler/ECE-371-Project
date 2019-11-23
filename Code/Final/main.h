@@ -8,6 +8,7 @@
 #include "display.h"
 #include "esp.h"
 #define q_capacity 1
+#define spi_capacity 2000
 
 extern queue_t displayQ; 
 extern queue_t speakerQ;

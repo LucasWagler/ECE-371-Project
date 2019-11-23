@@ -16,7 +16,7 @@ typedef struct
 
 //API
 void init_q(queue_t* ptr_to_existing_q, int capacity);
-bool get_q(queue_t *q0, int16_t *datum);
-bool put_q(queue_t *q0, int16_t datum);
+bool get_q(queue_t *q0, uint8_t *datum);
+bool put_q(queue_t *q0, uint8_t datum);
 
 #endif

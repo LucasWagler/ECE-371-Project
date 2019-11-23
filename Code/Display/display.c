@@ -1,5 +1,8 @@
 #include <MKL25Z4.h>
 #include "display.h"
+#include "queue.h"
+
+queue_t spiQ;
 
 const uint8_t dogm_init_seq[INITLENGTH] = { 0x3a, 0x09, 0x06, 0x1e, 0x39, 0x1b, 0x6e, 0x57, 0x72, 0x38, 0x0f };
 const uint8_t printSeq[PRINTLENGTH] = { "The device has been moved!" };
@@ -37,21 +40,40 @@ void config_spi(void)
 	SPI0->C1 |= SPI_C1_SPE_MASK;
 }
 
-void sendData(uint8_t value)
+void display_task(void)
 {
-	//Send
-	while(!(SPI0->S & (SPI_S_SPTEF_MASK))) {;}
-	SPI0->D = value;
-	
-	//Wait to Receive
-	while(!(SPI0->S & (SPI_S_SPRF_MASK))) {;}
-	uint8_t d_in = SPI0->D;
+	static bool virgin = true;
+	static bool ready = true;
+
+	if((SPI0->S & (SPI_S_SPRF_MASK)))// && ((SPI0->S & (SPI_S_SPTEF_MASK))))
+	{
+		ready = true;
+	}
+
+	if(ready)
+	{
+		if(virgin)
+		{
+			virgin = false;
+		}
+		else
+		{
+			uint8_t d_in = SPI0->D;
+		}
+		uint8_t value = 0;
+		if(get_q(&spiQ, &value))
+		{
+			//Send
+			SPI0->D = value;
+			ready = false;
+		}
+	}
 }
 
 void resetDOGM(void)
 {
 	PTC->PCOR |= (1UL << RESET);
-	for(uint32_t i = 0; i < 10000; i++){;}
+	for(uint32_t i = 0; i < 1500; i++){;}
 	PTC->PSOR |= (1UL << RESET);
 }
 
@@ -73,9 +95,17 @@ void prepData(uint8_t hexValue, uint8_t cod)
 	uint8_t high = hexValue;
 	high = high >> 4;
 	
-	sendData(start);
-	sendData(low);
-	sendData(high);
+	put_q(&spiQ, start);
+	put_q(&spiQ, low);
+	put_q(&spiQ, high);
+}
+
+void initDOGM()
+{
+	for(int i = 0; i < INITLENGTH; i++)
+	{
+		prepData(dogm_init_seq[i], 0);
+	}
 }
 
 void clearDOGM(void)
@@ -85,29 +115,24 @@ void clearDOGM(void)
 		prepData(' ', 1);
 	}
 }
+
 /*
 int main()
 {
+	init_q(&spiQ, (int)1000);
 	config_spi();
-	resetDOGM();
+	resetDOGM();	
+	initDOGM();
 	clearDOGM();
 	
-	//Initialization
-	for(uint8_t i = 0; i < INITLENGTH; i++)
+	for(int i = 0; i < PRINTLENGTH; i++)
 	{
-		prepData(dogm_init_seq[i], 0);
+		prepData(printSeq[i], 1);
 	}
 	
-	for(int i = 0; i < 10; i++)
+	while(1)
 	{
-		//Name
-		for(uint8_t j = 0; j < PRINTLENGTH; j++)
-		{
-			prepData(print[j], 1);
-		}
-		for(int j = 0; j < 5000000; j++);
-		clearDOGM();
-		for(int j = 0; j < 5000000; j++);
-	}	
+		display_task();
+	}
 }
 */

@@ -7,3 +7,7 @@
 .\objects\display.o: C:\Users\aj39a\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h
 .\objects\display.o: .\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h
 .\objects\display.o: display.h
+.\objects\display.o: ..\Queue\queue.h
+.\objects\display.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\display.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\display.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h

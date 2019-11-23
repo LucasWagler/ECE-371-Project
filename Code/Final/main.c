@@ -1,22 +1,16 @@
 #include "main.h"
+#define DOGMINITLENGTH ((PRINTLENGTH*3) + (DISPLAYLENGTH*3))
 
 queue_t displayQ; 
 queue_t speakerQ;
 queue_t espQ;
 
-void accelerometer_task()
+void filler(void)
 {
-	put_q(&displayQ, (int16_t)1);	
-	put_q(&espQ, (int16_t)1);	
-}
-
-void display_task()
-{
-	int16_t displayData = 0;
-	if(get_q(&displayQ, &displayData))
+	uint8_t value = 0;
+	if(get_q(&displayQ, &value))
 	{
-		clearDOGM();
-		if(displayData == 1)
+		if(value == 1)
 		{
 			for(int i = 0; i < PRINTLENGTH; i++)
 			{
@@ -26,9 +20,16 @@ void display_task()
 	}	
 }
 
+void accelerometer_task()
+{
+	put_q(&displayQ, (uint8_t)0);	
+	//put_q(&espQ, (uint8_t)1);	
+	filler();
+}
+
 void esp_task()
 {
-	int16_t espData = 0;
+	uint8_t espData = 0;
 	if(get_q(&espQ, &espData))
 	{
 		if(espData == 1)
@@ -63,27 +64,31 @@ int main()
 	init_q(&displayQ, (int)q_capacity);
 	init_q(&speakerQ, (int)q_capacity);
 	init_q(&espQ, (int)q_capacity);
+	init_q(&spiQ, (int)spi_capacity);
 	
 	//Config Display
 	config_spi();	
 	resetDOGM();
+	initDOGM();
 	clearDOGM();
-	for(int i = 0; i < INITLENGTH; i++)
+	for(int i = 0; i < DOGMINITLENGTH; i++)
 	{
-		prepData(dogm_init_seq[i], 0);
+		display_task();
 	}
-	
+		
 	//ESP Config
 	config_UART();
 	config_ESP();
 	
+	accelerometer_task();
+	
 	while(1)
 	{
-		put_q(&displayQ, (int16_t)0);	
-		put_q(&espQ, (int16_t)0);
-		speaker_task();
-		esp_task();
-		display_task();
-		accelerometer_task();		
-	}
+		
+		//put_q(&displayQ, (int16_t)0);	
+		//put_q(&espQ, (int16_t)0);
+		//speaker_task();
+		//esp_task();
+		display_task();	
+	}	
 }

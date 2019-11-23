@@ -10,7 +10,7 @@ void init_q(queue_t * ptr_to_existing_q, int capacity)
     ptr_to_existing_q ->bufSize = capacity + 1;
 }
 
-bool get_q(queue_t *q0, int16_t *datum)
+bool get_q(queue_t *q0, uint8_t *datum)
 {
     bool success = false;
     if (q0->head == q0->tail){ // empty
@@ -27,7 +27,7 @@ bool get_q(queue_t *q0, int16_t *datum)
     return success;
 }
 
-bool put_q(queue_t *q0, int16_t datum)
+bool put_q(queue_t *q0, uint8_t datum)
 {
     uint16_t new_tail = q0->tail + 1;
     if (new_tail >= q0->bufSize) new_tail = 0;

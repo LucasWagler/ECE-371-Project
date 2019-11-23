@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>CLOCK_SETUP=1</Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\Queue</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,6 +386,11 @@
               <FileName>display.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\display.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Queue\queue.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -2,6 +2,7 @@
 #define DISPLAY_H
 
 #include <stdint.h>
+#include "main.h"
 
 #define SCK (5)
 #define MOSI (6)
@@ -16,12 +17,13 @@
 //API
 extern const uint8_t dogm_init_seq[INITLENGTH];
 extern const uint8_t printSeq[PRINTLENGTH];
+extern queue_t spiQ;
 
 void config_spi(void);
 void resetDOGM(void);
 void clearDOGM(void);
-void sendData(uint8_t value);
+void initDOGM(void);
+void display_task(void);
 void prepData(uint8_t hexValue, uint8_t cod);
-extern int16_t displayData;
 
 #endif
