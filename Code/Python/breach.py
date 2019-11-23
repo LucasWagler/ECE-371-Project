@@ -11,7 +11,7 @@ wifi = pywifi.PyWiFi()
 iface = wifi.interfaces()[0]
 profile = pywifi.Profile()
 print("Initializing: Please place your Security System.\nYou have 30 seconds.")
-time.sleep(10)
+time.sleep(30)
 print("System Armed")
 
 while(1):

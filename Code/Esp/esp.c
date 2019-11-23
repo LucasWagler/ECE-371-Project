@@ -1,10 +1,8 @@
-#include <MKL25Z4.h>
-#include <stdlib.h>
 #include "esp.h"
 
-const uint8_t Send_data_in_multiple_connection_mode[SENDSize]	= "AT+CIPSEND=0,5\r\n";									//When in multiple connection mode the first parameter is the id of the connection followed by length in bytes.
+const uint8_t Send_data_in_multiple_connection_mode[SENDSize]	= "AT+CIPSEND=0,5\r\n";
 const uint8_t message[MSGSize] = "Moved";
-const uint8_t Close_connection[CLOSESize] = "AT+CIPCLOSE=0\r\n";									//set the operating mode to AP+STA (access point + station?)
+const uint8_t Close_connection[CLOSESize] = "AT+CIPCLOSE=0\r\n";
 
 void config_UART()
 {
