@@ -1,8 +1,18 @@
+// Main module for ECE 371 motion alarm project
+// Authors: Alex Jasper (anjasper17@my.trine.edu)
+//					Lucas Wagler (ldwagler15@my.trine.edu)
+//					Jake Garlits (jtgarlits16@my.trine.edu)
+// Updated: 2019-11-24 13:19
+//
+//TODO: Get ESP task to run alongside other tasks
+//			Add in Accelerometer task
+
+
 #include "main.h"
+
 #define DOGMINITLENGTH ((PRINTLENGTH*3) + (DISPLAYLENGTH*3))
 
-queue_t displayQ; 
-queue_t speakerQ;
+queue_t displayQ;
 queue_t espQ;
 
 void filler(void)
@@ -22,13 +32,25 @@ void filler(void)
 
 void accelerometer_task()
 {
-	put_q(&displayQ, (uint8_t)0);	
-	//put_q(&espQ, (uint8_t)1);	
+	//disable interrupts
+	uint32_t mask;
+	mask = __get_PRIMASK();
+	__disable_irq();
+	put_q(&displayQ, (uint8_t)1);
+	put_q(&speakerQ, (uint8_t)1);
+	put_q(&espQ, (uint8_t)1);	
 	filler();
+	//re-enable interrupts
+	__set_PRIMASK(mask);
 }
 
 void esp_task()
 {
+	//disable interrupts
+	uint32_t mask;
+	mask = __get_PRIMASK();
+	__disable_irq();
+	
 	uint8_t espData = 0;
 	if(get_q(&espQ, &espData))
 	{
@@ -51,11 +73,9 @@ void esp_task()
 			for(uint32_t a = 0; a < 5000000; a++){;} //WAIT
 		}
 	}
-}
-
-void speaker_task()
-{
 	
+	//re-enable interrupts
+	__set_PRIMASK(mask);
 }
 
 int main()
@@ -80,15 +100,20 @@ int main()
 	config_UART();
 	config_ESP();
 	
-	accelerometer_task();
-	
+	//Speaker Config
+	InitSpeaker();
+		
 	while(1)
 	{
+		static bool virgin = true;
 		
-		//put_q(&displayQ, (int16_t)0);	
-		//put_q(&espQ, (int16_t)0);
-		//speaker_task();
-		//esp_task();
-		display_task();	
+		if(virgin)
+		{
+			accelerometer_task();
+			virgin = false;
+		}
+		esp_task(); //Currently does not run properly - python script does not get any data
+		speaker_task();		
+		display_task();
 	}	
 }

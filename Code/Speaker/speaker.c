@@ -3,6 +3,11 @@
 
 #include "speaker.h"
 
+queue_t speakerQ;
+
+uint32_t tick_count = 0;
+uint8_t movement_flag = 0;
+
 void InitTpm1()
 {
 	SIM->SCGC6 |= SIM_SCGC6_TPM1_MASK;
@@ -31,7 +36,7 @@ void TPM1_IRQHandler()
 	PTC->PTOR |= (1UL << SPEAKER_PIN);
 	tick_count++;
 	PTB->PTOR = 1 << 18;
-  	// TPM1->SC |= TPM_SC_TOF_MASK;
+	// TPM1->SC |= TPM_SC_TOF_MASK;
 }
 
 void InitPort()
@@ -68,16 +73,26 @@ void InitSpeaker()
 	InitTpm1();
 }
 
-void SpeakerTask()
+void speaker_task()
 {
+	static bool moved = false;
 	static int sec_count = 0;
+	
 	if(tick_count >= 4000)
 	{
 		sec_count++;
 		tick_count = 0;//tick_count - 4000; // reset to number of ticks overflowed
 	}
 	
-	if(movement_flag)
+	if(get_q(&speakerQ, &movement_flag))
+	{
+		if(movement_flag)
+		{
+			moved = true;
+		}
+	}
+	
+	if(moved)
 	{
 		if(sec_count < 3)
 		{
@@ -94,24 +109,23 @@ void SpeakerTask()
 		if(sec_count >= 10)
 		{
 			sec_count = 0;
+			moved = false;
 		}
-	}
-	else
-	{
-		SoundOff(); // redundant?
-		// clear display
-		PTC->PCOR |= (1UL << SPEAKER_PIN);
-		sec_count = 0;
-		tick_count = 0;
 	}
 }
 
+/*
 // for testing
 int main()
 {
+	init_q(&speakerQ, (int)1);
 	InitSpeaker();
+	put_q(&speakerQ, (uint8_t)1);
+	//put_q(&speakerQ, (uint8_t)0);
+	
 	while(1)
-	{
-		SpeakerTask();
+	{		
+		speaker_task();		
 	}
 }
+*/

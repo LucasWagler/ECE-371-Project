@@ -95,25 +95,25 @@ ARM Macro Assembler    Page 2
    55 00000100         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
    56 00000100         ; </h>
    57 00000100         
-   58 00000100 00000000 
+   58 00000100 00001000 
                        Heap_Size
-                               EQU              0x00000000
+                               EQU              0x00001000
    59 00000100         
    60 00000100                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    61 00000000         __heap_base
    62 00000000         Heap_Mem
                                SPACE            Heap_Size
-   63 00000000         __heap_limit
-   64 00000000         
-   65 00000000         
-   66 00000000                 PRESERVE8
-   67 00000000                 THUMB
-   68 00000000         
-   69 00000000         
-   70 00000000         ; Vector Table Mapped to Address 0 at Reset
-   71 00000000         
-   72 00000000                 AREA             RESET, DATA, READONLY
+   63 00001000         __heap_limit
+   64 00001000         
+   65 00001000         
+   66 00001000                 PRESERVE8
+   67 00001000                 THUMB
+   68 00001000         
+   69 00001000         
+   70 00001000         ; Vector Table Mapped to Address 0 at Reset
+   71 00001000         
+   72 00001000                 AREA             RESET, DATA, READONLY
    73 00000000                 EXPORT           __Vectors
    74 00000000                 EXPORT           __Vectors_End
    75 00000000                 EXPORT           __Vectors_Size
@@ -590,8 +590,8 @@ ARM Macro Assembler    Page 10
 
 
   394 0000001E 4906            LDR              R1, =(Stack_Mem + Stack_Size)
-  395 00000020 4A04            LDR              R2, = (Heap_Mem +  Heap_Size)
-  396 00000022 4B06            LDR              R3, = Stack_Mem
+  395 00000020 4A06            LDR              R2, = (Heap_Mem +  Heap_Size)
+  396 00000022 4B07            LDR              R3, = Stack_Mem
   397 00000024 4770            BX               LR
   398 00000026         
   399 00000026 00 00           ALIGN
@@ -605,14 +605,15 @@ ARM Macro Assembler    Page 10
               00000000 
               00000000 
               00000100 
+              00001000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
 work --depend=.\startup_mkl25z4.d -o.\startup_mkl25z4.o -I.\RTE\Device\MKL25Z12
-8xxx4 -I.\RTE\_Target_1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Includ
-e -IC:\Keil_v5\ARM\PACK\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include --predefine
-="__UVISION_VERSION SETA 523" --predefine="_RTE_ SETA 1" --predefine="MKL25Z128
-xxx4 SETA 1" --list=.\startup_mkl25z4.lst RTE\Device\MKL25Z128xxx4\startup_MKL2
-5Z4.s
+8xxx4 -I.\RTE\_Target_1 -IC:\Users\aj39a\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.
+0\CMSIS\Core\Include -IC:\Users\aj39a\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx
+_DFP\1.15.0\Device\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_V
+ERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="MKL25Z128xxx4 SETA 1" 
+--list=.\startup_mkl25z4.lst RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 
 
 
@@ -676,7 +677,7 @@ Symbol: __heap_base
    Uses
       None
 Comment: __heap_base unused
-__heap_limit 00000000
+__heap_limit 00001000
 
 Symbol: __heap_limit
    Definitions
@@ -1275,7 +1276,7 @@ Symbol: FSEC
    Uses
       At line 257 in file RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s
 Comment: FSEC used once
-Heap_Size 00000000
+Heap_Size 00001000
 
 Symbol: Heap_Size
    Definitions
@@ -1371,4 +1372,4 @@ Symbol: __use_two_region_memory
       None
 Comment: __use_two_region_memory unused
 3 symbols
-416 symbols in table
+417 symbols in table

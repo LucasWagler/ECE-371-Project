@@ -1,3 +1,7 @@
+// Queue module for ECE 371 motion alarm project
+// Author: Dr. Sean Carroll (carrolls@trine.edu)
+// Updated: 2019-11-24 10:44 by Alex Jasper
+
 #ifndef QUEUE_H
 #define QUEUE_H
 

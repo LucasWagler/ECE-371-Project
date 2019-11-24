@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>CLOCK_SETUP=1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Queue;..\Display;..\Esp;..\Final</IncludePath>
+              <IncludePath>..\Queue;..\Display;..\Esp;..\Final;..\Speaker</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -475,6 +475,11 @@
               <FileName>esp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Esp\esp.c</FilePath>
+            </File>
+            <File>
+              <FileName>speaker.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Speaker\speaker.c</FilePath>
             </File>
           </Files>
         </Group>

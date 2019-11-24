@@ -1,6 +1,8 @@
-#include <MKL25Z4.h>
+// Main module for ECE 371 motion alarm project
+// Authors: Alex Jasper (anjasper17@my.trine.edu)
+//					Lucas Wagler (ldwagler15@my.trine.edu)
+
 #include "display.h"
-#include "queue.h"
 
 queue_t spiQ;
 
@@ -42,6 +44,7 @@ void config_spi(void)
 
 void display_task(void)
 {
+	
 	static bool virgin = true;
 	static bool ready = true;
 
@@ -61,13 +64,21 @@ void display_task(void)
 			uint8_t d_in = SPI0->D;
 		}
 		uint8_t value = 0;
+		
+		//Diable interrupts
+		uint32_t mask;
+		mask = __get_PRIMASK();
+		__disable_irq();
+		
 		if(get_q(&spiQ, &value))
 		{
 			//Send
 			SPI0->D = value;
 			ready = false;
 		}
-	}
+		//re-enable interrupts
+		__set_PRIMASK(mask);
+	}	
 }
 
 void resetDOGM(void)

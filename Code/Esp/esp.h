@@ -1,3 +1,13 @@
+// ESP8266 module for ECE 371 motion alarm project
+// Author: Alex Jasper (anjasper17@my.trine.edu)
+// Updated: 2019-11-24 10:44
+// Software-Derived Requirements:
+//	Wire ESP8266 Module Pin - 1 to Jumper 9 - Pin 14 on the Freedom Board (Ground)
+//	Wire ESP8266 Module Pin - 4 to Jumper 9 - Pin 8 on the Freedom Board (3.3V)
+//	Wire ESP8266 Module Pin - 8 to Jumper 9 - Pin 8 on the Freedom Board (3.3V)
+//	Wire ESP8266 Module Pin - 7 to Jumper 1 - Pin 4 on the Freedom Board (Rx to Tx)
+//	Wire ESP8266 Module Pin - 2 to Jumper 1 - Pin 2 on the Freedom Board (Tx to Rx)
+
 #ifndef ESP_H
 #define ESP_H
 

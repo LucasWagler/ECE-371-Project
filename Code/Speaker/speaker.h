@@ -11,24 +11,26 @@
 #define SPEAKER_H
 
 #include <MKL25Z4.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "queue.h"
 
 // Speaker: Port C
 #define SPEAKER_PIN 7
 
-// for testing
-uint8_t movement_flag = 1;
+//API
+extern uint8_t movement_flag;
+extern queue_t speakerQ;
 
-uint32_t tick_count = 0;
-// uint8_t sec_count = 0;
-
-void InitTpm1();
-void TPM1_IRQHandler();
-void InitPort();
-void SoundOff();
-void SoundOn();
+void InitTpm1(void);
+void TPM1_IRQHandler(void);
+void InitPort(void);
+void SoundOff(void);
+void SoundOn(void);
 
 // For use in main:
-void InitSpeaker();
-void SpeakerTask();
+void InitSpeaker(void);
+void speaker_task(void);
 
 #endif

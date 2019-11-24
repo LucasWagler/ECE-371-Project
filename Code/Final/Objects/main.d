@@ -12,6 +12,9 @@
 .\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: ..\Display\display.h
+.\objects\main.o: C:\Users\aj39a\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
 .\objects\main.o: ..\Final\main.h
 .\objects\main.o: ..\Esp\esp.h
+.\objects\main.o: C:\Users\aj39a\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h
+.\objects\main.o: ..\Speaker\speaker.h
 .\objects\main.o: C:\Users\aj39a\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.0\Device\Include\MKL25Z4.h

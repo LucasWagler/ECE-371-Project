@@ -7,6 +7,9 @@ import time
 import pywifi
 from pywifi import const
 
+AP = 'Thunder_Devices'
+ESP = 'AJ'
+
 wifi = pywifi.PyWiFi()
 iface = wifi.interfaces()[0]
 profile = pywifi.Profile()
@@ -16,7 +19,7 @@ print("System Armed")
 
 while(1):
     reconnect = False
-    #Open socket to AJ
+    #Open socket to ESP
     try:
         soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         soc.connect(('192.168.0.222', 80))
@@ -30,14 +33,14 @@ while(1):
             time.sleep(0.25)
             assert iface.status() in\
                 [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
-            profile.ssid = 'RPI'
+            profile.ssid = AP
             profile.auth = const.AUTH_ALG_OPEN
             profile.akm.append(const.AKM_TYPE_NONE)
             profile.cipher = const.CIPHER_TYPE_CCMP
             profile.key = '12345678'
             profile = iface.add_network_profile(profile)
             iface.connect(profile)
-            print("Connected to RPI")
+            print("Connected to " + str(AP))
             time.sleep(5)
             #notify user of breach
             requests.post("https://maker.ifttt.com/trigger/breached/with/key/Qzhe5UWU5AUSnoBumev4U")        
@@ -55,15 +58,15 @@ while(1):
             logger.addHandler(handler)
             #log breach
             logger.warning("A breach was detected!")        
-            #Disconnect from whatever device and reconnect to AJ
+            #Disconnect from AP and reconnect to ESP
             iface.disconnect()
             time.sleep(0.25)
             assert iface.status() in\
                 [const.IFACE_DISCONNECTED, const.IFACE_INACTIVE]
-            profile.ssid = 'AJ'
+            profile.ssid = ESP
             profile.auth = const.AUTH_ALG_OPEN
             profile.akm.append(const.AKM_TYPE_NONE)
             profile = iface.add_network_profile(profile)
             iface.connect(profile)
-            print("Connected to AJ")
+            print("Connected to " + str(ESP))
             time.sleep(3)

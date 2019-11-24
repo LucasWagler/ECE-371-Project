@@ -1,3 +1,6 @@
+// Main module for ECE 371 motion alarm project
+// Author: Alex Jasper (anjasper17@my.trine.edu)
+
 #include "esp.h"
 
 const uint8_t Send_data_in_multiple_connection_mode[SENDSize]	= "AT+CIPSEND=0,5\r\n";

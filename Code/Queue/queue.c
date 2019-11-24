@@ -1,4 +1,6 @@
-#include <MKL25Z4.h>
+// Queue module for ECE 371 motion alarm project
+// Author: Dr. Sean Carroll (carrolls@trine.edu)
+
 #include "queue.h"
 
 void init_q(queue_t * ptr_to_existing_q, int capacity)
