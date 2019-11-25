@@ -5,8 +5,8 @@
 
 queue_t speakerQ;
 
-uint32_t tick_count = 0;
-uint8_t movement_flag = 0;
+static uint32_t tick_count = 0;
+static uint8_t movement_flag = 0;
 
 void InitTpm1()
 {

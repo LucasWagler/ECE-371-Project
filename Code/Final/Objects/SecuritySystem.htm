@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\SecuritySystem.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SecuritySystem.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Nov 24 13:24:02 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 25 16:01:22 2019
 <BR><P>
 <H3>Maximum Stack Usage =        144 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -551,7 +551,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(RESET)
 </UL>
 <P><STRONG><a name="[5f]"></a>accelerometer_task</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, main.o(i.accelerometer_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = accelerometer_task &rArr; filler &rArr; prepData &rArr; put_q
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = accelerometer_task &rArr; filler &rArr; prepData &rArr; put_q
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_q
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;filler
@@ -560,7 +560,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[62]"></a>clearDOGM</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, display.o(i.clearDOGM))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = clearDOGM &rArr; prepData &rArr; put_q
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = clearDOGM &rArr; prepData &rArr; put_q
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
 </UL>
@@ -592,7 +592,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[69]"></a>esp_task</STRONG> (Thumb, 138 bytes, Stack size 16 bytes, main.o(i.esp_task))
+<P><STRONG><a name="[69]"></a>esp_task</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, main.o(i.esp_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = esp_task &rArr; get_q
 </UL>
 <BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_UART
@@ -602,7 +602,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[61]"></a>filler</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, main.o(i.filler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = filler &rArr; prepData &rArr; put_q
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = filler &rArr; prepData &rArr; put_q
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_q
@@ -620,7 +620,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6a]"></a>initDOGM</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, display.o(i.initDOGM))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = initDOGM &rArr; prepData &rArr; put_q
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = initDOGM &rArr; prepData &rArr; put_q
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
 </UL>
@@ -635,7 +635,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[45]"></a>main</STRONG> (Thumb, 114 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[45]"></a>main</STRONG> (Thumb, 154 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = main &rArr; config_ESP
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;speaker_task
@@ -654,8 +654,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[63]"></a>prepData</STRONG> (Thumb, 60 bytes, Stack size 24 bytes, display.o(i.prepData))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = prepData &rArr; put_q
+<P><STRONG><a name="[63]"></a>prepData</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, display.o(i.prepData))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = prepData &rArr; put_q
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_q
 </UL>

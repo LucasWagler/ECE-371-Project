@@ -396,7 +396,7 @@ Image Symbol Table
     .ARM.__at_0x400                          0x00000400   Section       16  startup_mkl25z4.o(.ARM.__at_0x400)
     i.config_ESP                             0x00000410   Section        0  esp.o(i.config_ESP)
     i.config_UART                            0x00000560   Section        0  esp.o(i.config_UART)
-    .constdata                               0x00000610   Section      175  esp.o(.constdata)
+    .constdata                               0x00000610   Section      171  esp.o(.constdata)
     .bss                                     0x1ffff000   Section       96  libspace.o(.bss)
     HEAP                                     0x1ffff060   Section     4096  startup_mkl25z4.o(HEAP)
     Heap_Mem                                 0x1ffff060   Data        4096  startup_mkl25z4.o(HEAP)
@@ -548,10 +548,10 @@ Image Symbol Table
     config_ESP                               0x00000411   Thumb Code   324  esp.o(i.config_ESP)
     config_UART                              0x00000561   Thumb Code   160  esp.o(i.config_UART)
     Send_data_in_multiple_connection_mode    0x00000610   Data          20  esp.o(.constdata)
-    message                                  0x00000624   Data           5  esp.o(.constdata)
-    Close_connection                         0x00000629   Data          17  esp.o(.constdata)
-    Region$$Table$$Base                      0x000006c0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000006d0   Number         0  anon$$obj.o(Region$$Table)
+    message                                  0x00000624   Data           1  esp.o(.constdata)
+    Close_connection                         0x00000625   Data          17  esp.o(.constdata)
+    Region$$Table$$Base                      0x000006bc   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000006cc   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x1ffff000   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x1ffff060   Data           0  libspace.o(.bss)
 
@@ -563,9 +563,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000181
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x000006d0, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000006cc, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000006d0, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000006cc, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -631,17 +631,17 @@ Memory Map of the image
     0x00000400   0x00000400   0x00000010   Code   RO          113    .ARM.__at_0x400     startup_mkl25z4.o
     0x00000410   0x00000410   0x00000150   Code   RO            3    i.config_ESP        esp.o
     0x00000560   0x00000560   0x000000b0   Code   RO            4    i.config_UART       esp.o
-    0x00000610   0x00000610   0x000000af   Data   RO            7    .constdata          esp.o
-    0x000006bf   0x000006bf   0x00000001   PAD
-    0x000006c0   0x000006c0   0x00000010   Data   RO          439    Region$$Table       anon$$obj.o
+    0x00000610   0x00000610   0x000000ab   Data   RO            7    .constdata          esp.o
+    0x000006bb   0x000006bb   0x00000001   PAD
+    0x000006bc   0x000006bc   0x00000010   Data   RO          439    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x000006d0, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x000006cc, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x1ffff000, Load base: 0x000006d0, Size: 0x00001160, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x1ffff000, Load base: 0x000006cc, Size: 0x00001160, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -657,12 +657,12 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       664         52        175          0          0       8135   esp.o
+       664         52        171          0          0       8135   esp.o
         84         48        192          0       4352        892   startup_mkl25z4.o
        312         46          0          0          0        585   system_mkl25z4.o
 
     ----------------------------------------------------------------------
-      1060        146        384          0       4352       9612   Object Totals
+      1060        146        380          0       4352       9612   Object Totals
          0          0         16          0          0          0   (incl. Generated)
          0          0          1          0          0          0   (incl. Padding)
 
@@ -711,15 +711,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1360        162        384          0       4448       9884   Grand Totals
-      1360        162        384          0       4448       9884   ELF Image Totals
-      1360        162        384          0          0          0   ROM Totals
+      1360        162        380          0       4448       9884   Grand Totals
+      1360        162        380          0       4448       9884   ELF Image Totals
+      1360        162        380          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 1744 (   1.70kB)
+    Total RO  Size (Code + RO Data)                 1740 (   1.70kB)
     Total RW  Size (RW Data + ZI Data)              4448 (   4.34kB)
-    Total ROM Size (Code + RO Data + RW Data)       1744 (   1.70kB)
+    Total ROM Size (Code + RO Data + RW Data)       1740 (   1.70kB)
 
 ==============================================================================
 

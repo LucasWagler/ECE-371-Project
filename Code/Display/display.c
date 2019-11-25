@@ -44,7 +44,6 @@ void config_spi(void)
 
 void display_task(void)
 {
-	
 	static bool virgin = true;
 	static bool ready = true;
 
@@ -106,9 +105,17 @@ void prepData(uint8_t hexValue, uint8_t cod)
 	uint8_t high = hexValue;
 	high = high >> 4;
 	
+	//disable interrupts
+	uint32_t mask;
+	mask = __get_PRIMASK();
+	__disable_irq();
+	
 	put_q(&spiQ, start);
 	put_q(&spiQ, low);
 	put_q(&spiQ, high);
+	
+	//re-enable interrupts
+	__set_PRIMASK(mask);
 }
 
 void initDOGM()

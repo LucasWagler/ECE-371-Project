@@ -13,8 +13,8 @@ ESP = 'AJ'
 wifi = pywifi.PyWiFi()
 iface = wifi.interfaces()[0]
 profile = pywifi.Profile()
-print("Initializing: Please place your Security System.\nYou have 30 seconds.")
-time.sleep(30)
+print("Initializing: Please place your Security System and press the reset button.\nYou have 15 seconds.")
+time.sleep(15)
 print("System Armed")
 
 while(1):
@@ -23,7 +23,7 @@ while(1):
     try:
         soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         soc.connect(('192.168.0.222', 80))
-        msg = soc.recv(10)
+        msg = soc.recv(5)
         out = msg.decode("utf-8")
         if(out == "Moved"):
             print(out)

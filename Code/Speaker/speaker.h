@@ -20,7 +20,7 @@
 #define SPEAKER_PIN 7
 
 //API
-extern uint8_t movement_flag;
+//extern uint8_t movement_flag;
 extern queue_t speakerQ;
 
 void InitTpm1(void);

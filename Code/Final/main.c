@@ -2,10 +2,9 @@
 // Authors: Alex Jasper (anjasper17@my.trine.edu)
 //					Lucas Wagler (ldwagler15@my.trine.edu)
 //					Jake Garlits (jtgarlits16@my.trine.edu)
-// Updated: 2019-11-24 13:19
+// Updated: 2019-11-25 16:18
 //
-//TODO: Get ESP task to run alongside other tasks
-//			Add in Accelerometer task
+//TODO: Add in Accelerometer task
 
 
 #include "main.h"
@@ -45,34 +44,41 @@ void accelerometer_task()
 }
 
 void esp_task()
-{
+{	
 	//disable interrupts
 	uint32_t mask;
 	mask = __get_PRIMASK();
 	__disable_irq();
 	
+	static bool send = false;	
 	uint8_t espData = 0;
 	if(get_q(&espQ, &espData))
 	{
 		if(espData == 1)
 		{
-			for(int i = 0; i < SENDSize; i++)
-			{
-				send_UART(Send_data_in_multiple_connection_mode[i]);
-			}
-			for(uint32_t a = 0; a < 5000000; a++){;} //WAIT
-			for(int j = 0; j < MSGSize; j++)
-			{
-				send_UART(message[j]);
-			}
-			for(uint32_t a = 0; a < 5000000; a++){;} //WAIT
-			for(uint8_t k = 0; k < CLOSESize; k++)
-			{
-				send_UART(Close_connection[k]);
-			}
-			for(uint32_t a = 0; a < 5000000; a++){;} //WAIT
+			send = true;
 		}
 	}
+	
+	if(send)
+	{
+		for(int i = 0; i < SENDSize; i++)
+		{
+			send_UART(Send_data_in_multiple_connection_mode[i]);
+		}
+		for(uint32_t a = 0; a < 5000000; a++){;} //WAIT
+		for(int j = 0; j < MSGSize; j++)
+		{
+			send_UART(message[j]);
+		}
+		for(uint32_t a = 0; a < 5000000; a++){;} //WAIT
+		for(uint8_t k = 0; k < CLOSESize; k++)
+		{
+			send_UART(Close_connection[k]);
+		}
+		for(uint32_t a = 0; a < 5000000; a++){;} //WAIT
+		send = false;
+	}	
 	
 	//re-enable interrupts
 	__set_PRIMASK(mask);
@@ -103,16 +109,23 @@ int main()
 	//Speaker Config
 	InitSpeaker();
 		
-	while(1)
+	//accelerometer_task();
+	//Wait for initial wifi connection
+	for(int i = 0; i < 90; i++)
 	{
+		for(uint64_t i = 0; i < 0xFFFFF; i++){;}
+	}
+	
+	while(1)
+	{		
 		static bool virgin = true;
-		
 		if(virgin)
 		{
 			accelerometer_task();
 			virgin = false;
-		}
-		esp_task(); //Currently does not run properly - python script does not get any data
+		}	
+
+		esp_task();
 		speaker_task();		
 		display_task();
 	}	
