@@ -8,3 +8,6 @@
 .\objects\esp.o: C:\Users\aj39a\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h
 .\objects\esp.o: .\RTE\Device\MKL25Z128xxx4\system_MKL25Z4.h
 .\objects\esp.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\esp.o: ..\Queue\queue.h
+.\objects\esp.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\esp.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdio.h

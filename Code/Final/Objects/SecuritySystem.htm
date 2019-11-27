@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\SecuritySystem.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\SecuritySystem.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 25 16:01:22 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Nov 27 16:50:51 2019
 <BR><P>
-<H3>Maximum Stack Usage =        144 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        120 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; config_ESP
 <P>
@@ -191,7 +191,7 @@ Global Symbols
 <P><STRONG><a name="[91]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[44]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 120 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; config_ESP
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -445,8 +445,8 @@ Global Symbols
 <P><STRONG><a name="[50]"></a>__rt_SIGRTMEM</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, defsig_rtmem_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = __rt_SIGRTMEM &rArr; __rt_SIGRTMEM_inner &rArr; __default_signal_display &rArr; _ttywrch
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sig_exit
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_SIGRTMEM_inner
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_SIGRTMEM_inner
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sig_exit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_init_alloc
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__Heap_Broken
@@ -487,8 +487,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[4a]"></a>_sys_exit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, sys_exit.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sig_exit
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
+<BR><BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sig_exit
 </UL>
 
 <P><STRONG><a name="[59]"></a>_ttywrch</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, sys_wrch.o(.text))
@@ -550,7 +550,7 @@ Global Symbols
 <P><STRONG><a name="[26]"></a>TPM1_IRQHandler</STRONG> (Thumb, 64 bytes, Stack size 0 bytes, speaker.o(i.TPM1_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_mkl25z4.o(RESET)
 </UL>
-<P><STRONG><a name="[5f]"></a>accelerometer_task</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, main.o(i.accelerometer_task))
+<P><STRONG><a name="[5f]"></a>accelerometer_task</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, main.o(i.accelerometer_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = accelerometer_task &rArr; filler &rArr; prepData &rArr; put_q
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_q
@@ -567,11 +567,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[64]"></a>config_ESP</STRONG> (Thumb, 324 bytes, Stack size 144 bytes, esp.o(i.config_ESP))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = config_ESP
+<P><STRONG><a name="[64]"></a>config_ESP</STRONG> (Thumb, 302 bytes, Stack size 120 bytes, esp.o(i.config_ESP))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = config_ESP
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_UART
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_UART_Config
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -592,19 +592,19 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[69]"></a>esp_task</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, main.o(i.esp_task))
+<P><STRONG><a name="[69]"></a>esp_task</STRONG> (Thumb, 178 bytes, Stack size 16 bytes, esp.o(i.esp_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = esp_task &rArr; get_q
 </UL>
-<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_UART
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_q
+<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_q
 </UL>
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[61]"></a>filler</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, main.o(i.filler))
+<P><STRONG><a name="[61]"></a>filler</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, main.o(i.filler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = filler &rArr; prepData &rArr; put_q
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
+<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_q
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_q
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accelerometer_task
@@ -614,9 +614,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = get_q
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;speaker_task
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_task
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_task
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;filler
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_task
 </UL>
 
 <P><STRONG><a name="[6a]"></a>initDOGM</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, display.o(i.initDOGM))
@@ -635,20 +635,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[45]"></a>main</STRONG> (Thumb, 154 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = main &rArr; config_ESP
+<P><STRONG><a name="[45]"></a>main</STRONG> (Thumb, 174 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; config_ESP
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;speaker_task
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;resetDOGM
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_q
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initDOGM
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_task
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_task
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;config_spi
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;config_UART
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;config_ESP
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearDOGM
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitSpeaker
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_task
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accelerometer_task
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
@@ -668,6 +668,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = put_q
 </UL>
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepData
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;filler
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accelerometer_task
 </UL>
 
@@ -675,9 +676,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[66]"></a>send_UART</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, esp.o(i.send_UART))
+<P><STRONG><a name="[66]"></a>send_UART_Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, esp.o(i.send_UART_Config))
 <BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;config_ESP
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_task
 </UL>
 
 <P><STRONG><a name="[6f]"></a>speaker_task</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, speaker.o(i.speaker_task))
