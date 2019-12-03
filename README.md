@@ -9,6 +9,7 @@ This is a "security system" using an accelerometer to indicate a specific object
 - [FRDM-KL25Z microcontroller](https://www.nxp.com/design/development-boards/freedom-development-boards/mcu-boards/freedom-development-platform-for-kinetis-kl14-kl15-kl24-kl25-mcus:FRDM-KL25Z)
 - [ESP8266 WiFi chip](https://www.sparkfun.com/products/13678)
 - [DOGM204e display](https://www.lcd-module.de/fileadmin/eng/pdf/doma/dogm204e.pdf)
+- [MMA8451 accelerometer](https://learn.adafruit.com/adafruit-mma8451-accelerometer-breakout/overview)
 
 ## Software
 
