@@ -1,4 +1,4 @@
-// Main module for ECE 371 motion alarm project
+// ESP8266 module for ECE 371 motion alarm project
 // Author: Alex Jasper (anjasper17@my.trine.edu)
 
 #include "esp.h"
@@ -143,42 +143,3 @@ void esp_task()
 	//re-enable interrupts
 	__set_PRIMASK(mask);
 }
-
-/*
-int main()
-{		
-	config_UART();
-	config_ESP();	
-	init_q(&espSendQ, (int)SENDSize);
-	init_q(&espMsgQ, (int)MSGSize);
-	init_q(&espCloseQ, (int)CLOSESize);
-
-		
-	
-	for(int i = 0; i < 90; i++)
-	{
-		for(uint64_t i = 0; i < 0xFFFFF; i++){;}
-	}
-
-	while(1)
-	{
-		if(repeat)
-		{
-			for(uint8_t i = 0; i < SENDSize; i++)
-			{
-				put_q(&espSendQ, Send[i]);
-			}																					
-			for(uint8_t i = 0; i < MSGSize; i++)
-			{	
-				put_q(&espMsgQ, message[i]);
-			}		
-			for(uint8_t i = 0; i < CLOSESize; i++)
-			{
-				put_q(&espCloseQ, Close[i]);
-			}
-			repeat = 0;
-		}		
-		send_UART_Data();				
-	}
-}
-*/

@@ -1,4 +1,4 @@
-// Main module for ECE 371 motion alarm project
+// Display module for ECE 371 motion alarm project
 // Authors: Alex Jasper (anjasper17@my.trine.edu)
 //					Lucas Wagler (ldwagler15@my.trine.edu)
 // Updated: 2019-11-24 10:43

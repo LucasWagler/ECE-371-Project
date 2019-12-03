@@ -2,9 +2,7 @@
 // Authors: Alex Jasper (anjasper17@my.trine.edu)
 //					Lucas Wagler (ldwagler15@my.trine.edu)
 //					Jake Garlits (jtgarlits16@my.trine.edu)
-// Updated: 2019-11-27 17:15
-//
-//TODO: Add in Accelerometer task
+// Updated: 2019-12-03 16:52
 
 #include "main.h"
 

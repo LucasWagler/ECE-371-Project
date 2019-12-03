@@ -1,3 +1,15 @@
+// Accelerometer module for ECE 371 motion alarm project
+// Authors: Jake Garlits (jtgarlits16@my.trine.edu)
+//					Alex Jasper (anjasper17@my.trine.edu)
+// Updated: 2019-11-24 10:43
+// Software-Derived Requirements:
+//	Wire a 4.7kOhm resistor from Jumper 9 - Pin 8 on the Freedom Board (3.3V) to Jumper 10 - Pin 4 on the Freedom Board (I2C_SDA)
+//	Wire a 4.7kOhm resistor from Jumper 9 - Pin 8 on the Freedom Board (3.3V) to Jumper 10 - Pin 6 on the Freedom Board (I2C_SCL)
+//	Wire MMA8451 Pin - SDA between resistor and I2C_SDA
+//	Wire MMA8451 Pin - SCL between resistor and I2C_SCL
+//	Wire MMA8451 Pin - VIN to Jumper 9 - Pin 8 on the Freedom Board (3.3V)
+//	Wire MMA8451 Pin - GND to Jumper 9 - Pin 14 on the Freedom Board (Ground)
+
 #ifndef ACCELEROMETER_H
 #define ACCELEROMETER_H
 
@@ -9,7 +21,6 @@
 
 #include "queue.h"
 #include "main.h"
-
 
 //configure I2C control register 1; I2C0->C1 to select master mode 
 //(for details, see I2C register mask in mkl25z4.h file)
@@ -41,7 +52,7 @@
 #define DELAYVALUE 10
 #define SENSITIVITY 5
 	
-// function prototypes
+//API
 void Init_RGB_LEDs(void);
 void Control_RGB_LEDs(unsigned int red_on, unsigned int green_on, unsigned int blue_on);
 void i2c_init(void);

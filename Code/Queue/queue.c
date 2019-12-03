@@ -41,16 +41,3 @@ bool put_q(queue_t *q0, uint8_t datum)
     }
     return true;
 }
-
-bool peek_q(queue_t *q0)
-{
-    bool success = false;
-    if (q0->head == q0->tail){ // empty
-        success = false; //{datum==0,success == false}
-    }
-    else
-    {
-        success = true;
-    }
-    return success;
-}

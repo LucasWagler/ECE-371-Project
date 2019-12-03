@@ -7,7 +7,7 @@ import time
 import pywifi
 from pywifi import const
 
-AP = 'RPI'
+AP = 'Thunder_Devices'
 ESP = 'AJ'
 
 wifi = pywifi.PyWiFi()

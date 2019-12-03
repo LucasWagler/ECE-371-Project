@@ -1,6 +1,6 @@
 // Queue module for ECE 371 motion alarm project
 // Author: Dr. Sean Carroll (carrolls@trine.edu)
-// Updated: 2019-11-24 10:44 by Alex Jasper
+// Updated: 2019-11-24 10:44
 
 #ifndef QUEUE_H
 #define QUEUE_H
@@ -22,6 +22,5 @@ typedef struct
 void init_q(queue_t* ptr_to_existing_q, int capacity);
 bool get_q(queue_t *q0, uint8_t *datum);
 bool put_q(queue_t *q0, uint8_t datum);
-bool peek_q(queue_t *q0);
 
 #endif

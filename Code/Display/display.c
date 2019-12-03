@@ -1,4 +1,4 @@
-// Main module for ECE 371 motion alarm project
+// Display module for ECE 371 motion alarm project
 // Authors: Alex Jasper (anjasper17@my.trine.edu)
 //					Lucas Wagler (ldwagler15@my.trine.edu)
 
@@ -133,24 +133,3 @@ void clearDOGM(void)
 		prepData(' ', 1);
 	}
 }
-
-/*
-int main()
-{
-	init_q(&spiQ, (int)1000);
-	config_spi();
-	resetDOGM();	
-	initDOGM();
-	clearDOGM();
-	
-	for(int i = 0; i < PRINTLENGTH; i++)
-	{
-		prepData(printSeq[i], 1);
-	}
-	
-	while(1)
-	{
-		display_task();
-	}
-}
-*/

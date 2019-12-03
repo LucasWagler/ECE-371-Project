@@ -18,10 +18,7 @@ void InitTpm1()
 	TPM1->MOD = 12000UL;
 	
 	TPM1->CONTROLS[0].CnSC = TPM_CnSC_MSA_MASK | TPM_CnSC_ELSA_MASK | TPM_CnSC_CHIE_MASK;
-	
-	// PORTE->PCR[20] &= ~PORT_PCR_MUX_MASK;
-	// PORTE->PCR[20] &= PORT_PCR_MUX(3);
-	
+		
 	TPM1->SC = TPM_SC_CMOD(1) | TPM_SC_PS(0) | TPM_SC_TOIE_MASK;
 	NVIC_SetPriority(TPM1_IRQn, 3);
 	NVIC_ClearPendingIRQ(TPM1_IRQn);
@@ -35,25 +32,16 @@ void TPM1_IRQHandler()
 	TPM1->STATUS |= TPM_STATUS_CH0F_MASK | TPM_STATUS_CH1F_MASK | TPM_STATUS_TOF_MASK;
 	PTC->PTOR |= (1UL << SPEAKER_PIN);
 	tick_count++;
-	//PTB->PTOR = 1 << 18;
-	// TPM1->SC |= TPM_SC_TOF_MASK;
 }
 
 void InitPort()
 {
 	// Speaker Pin
-	SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK; // could turn on alarm by controlling clock gate
-	PORTC->PCR[SPEAKER_PIN] &= ~PORT_PCR_MUX_MASK; //potential pain point if done elsewhere in project?
+	SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK;
+	PORTC->PCR[SPEAKER_PIN] &= ~PORT_PCR_MUX_MASK;
 	PORTC->PCR[SPEAKER_PIN] |= PORT_PCR_MUX(1);
 	PTC->PDDR |= (1UL << SPEAKER_PIN);
 	PTC->PCOR |= (1UL << SPEAKER_PIN);
-	
-	// Test Pin (Blue LED)
-	// SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
-	// PORTD->PCR[test_pin] &= ~PORT_PCR_MUX_MASK; //potential pain point if done elsewhere in project?
-	// PORTD->PCR[test_pin] |= PORT_PCR_MUX(1);
-	// PTD->PDDR |= (1UL << test_pin);
-	// PTD->PSOR |= (1UL << test_pin);
 }
 
 void SoundOff()
@@ -97,14 +85,10 @@ void speaker_task()
 		if(sec_count < 3)
 		{
 			SoundOn();
-			// PTD->PCOR |= (1UL << test_pin);
-			// display "beep"
 		}
 		else if(sec_count >= 3)
 		{
 			SoundOff();
-			// PTD->PSOR |= (1UL << test_pin);
-			// clear display
 		}
 		if(sec_count >= 10)
 		{
@@ -113,19 +97,3 @@ void speaker_task()
 		}
 	}
 }
-
-/*
-// for testing
-int main()
-{
-	init_q(&speakerQ, (int)1);
-	InitSpeaker();
-	put_q(&speakerQ, (uint8_t)1);
-	//put_q(&speakerQ, (uint8_t)0);
-	
-	while(1)
-	{		
-		speaker_task();		
-	}
-}
-*/

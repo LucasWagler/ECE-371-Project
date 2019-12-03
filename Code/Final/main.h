@@ -1,6 +1,6 @@
 // Main module for ECE 371 motion alarm project
 // Author: Alex Jasper (anjasper17@my.trine.edu)
-// Updated: 2019-11-24 10:32
+// Updated: 2019-12-03 16:52
 
 #ifndef MAIN_H
 #define MAIN_H

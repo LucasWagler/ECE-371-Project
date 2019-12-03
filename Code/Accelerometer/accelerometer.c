@@ -1,3 +1,7 @@
+// Accelerometer module for ECE 371 motion alarm project
+// Authors: Jake Garlits (jtgarlits16@my.trine.edu)
+//					Alex Jasper (anjasper17@my.trine.edu)
+
 #include "accelerometer.h"
 
 void filler(void)
@@ -193,55 +197,3 @@ void accelerometer_task()
 	//re-enable interrupts
 	__set_PRIMASK(mask);
 }
-
-/*
-int main(){
-	
-	uint8_t CTRL_REG1_Data;
-	Init_RGB_LEDs();
-	Control_RGB_LEDs(0,0,0);
-	i2c_init();
-	i2c_write_byte(0x00, 0x00, 0x00); //Send out pilot signal
-	Delay(DELAYVALUE);	
-	i2c_write_byte(0x00, 0x00, 0x00); //Send out pilot signal
-	Delay(DELAYVALUE);	
-	i2c_write_byte(MMA_ADDR, 0x2A, 0x18); //Set the device in 100 Hz ODR, Standby
-	Delay(DELAYVALUE);
-	CTRL_REG1_Data = i2c_read_byte(MMA_ADDR, 0x2A);
-	CTRL_REG1_Data |= 0x01;
-	Delay(DELAYVALUE);
-	i2c_write_byte(MMA_ADDR, 0x2A, CTRL_REG1_Data);
-	Delay(DELAYVALUE);
-	uint8_t IntSourceMFF = i2c_read_byte(MMA_ADDR, 0x0C);
-	Delay(DELAYVALUE);
-	IntSourceMFF = i2c_read_byte(MMA_ADDR, 0x16);
-	Delay(DELAYVALUE);	
-	static uint8_t data[3]={0,0,0};
-	
-	static uint8_t data_x=0;
-	static uint8_t data_y=0;
-	static uint8_t data_z=0;
-	
-	while(1)
-	{
-		data_x = i2c_read_byte(MMA_ADDR, 0x01);
-		Delay(DELAYVALUE);
-		data_y = i2c_read_byte(MMA_ADDR, 0x03);
-		Delay(DELAYVALUE);
-		data_z = i2c_read_byte(MMA_ADDR, 0x05);
-		Delay(DELAYVALUE);
-		
-		if((data_x > (data[0] + SENSITIVITY)) || (data_x < (data[0] - SENSITIVITY)) ||
-			(data_y > (data[1] + SENSITIVITY)) || (data_y < (data[1] - SENSITIVITY)) ||
-			(data_z > (data[2] + SENSITIVITY)) || (data_z < (data[2] - SENSITIVITY))) 
-		{
-			Control_RGB_LEDs(0,1,0);
-		}
-		else Control_RGB_LEDs (0,0,0);
-		
-		data[0] = data_x;
-		data[1] = data_y;
-		data[2] = data_z;		
-	}		
-}
-*/
